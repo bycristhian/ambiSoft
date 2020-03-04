@@ -1,0 +1,18 @@
+
+.bg_header {
+    background-color: #FFF;
+    margin-bottom: 1px;
+    /*background-color: #4CAF50;*/
+}
+
+.text {
+    color: #000;
+    text-decoration: none;
+}
+
+.box_sombra {
+    z-index: 2;
+    -webkit-box-shadow: 3px 10px 88px -24px rgba(0,0,0,1);
+    -moz-box-shadow: 3px 10px 88px -24px rgba(0,0,0,1);
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+}
