@@ -1,6 +1,10 @@
 import React from 'react'
 import slider1 from '../img/slider1.jpg'
-import slider2 from '../img/slider2.jpg'
+import slider4 from '../img/slider4.jpg'
+import slider10 from '../img/slider10.jpg'
+
+// Components
+import ItemSlider from './ItemSlider'
 
 class Slider extends React.Component {
 
@@ -12,28 +16,10 @@ class Slider extends React.Component {
                     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                 </ol>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <img src={slider1} className="d-block w-100" height="750" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <img src={slider1} className="d-block w-100" height="750" alt="..."/>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </div>
-                    <div className="carousel-item">
-                        <img src="..." className="d-block w-100" alt="..." />
-                        <div className="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        </div>
-                    </div>
+                <div className="carousel-inner">                    
+                    <ItemSlider title="Reciclar no es una obligación, es TU responsabilidad" subtitle="El reciclaje es una de las maneras más fáciles de combatir el Calentamiento Global, ya que evitamos generar mayor contaminación reutilizando de nuevo las materias primas. Además el reciclaje puede salvar vidas recogiendo tapones." image={slider1} typeDiv="carousel-item active" />
+                    <ItemSlider title="Title Slider1" subtitle="SUbtitle Slider1" image={slider4} typeDiv="carousel-item" />
+                    <ItemSlider title="" subtitle="" image={slider10} typeDiv="carousel-item" />
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>

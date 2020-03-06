@@ -1,23 +1,23 @@
 import React from 'react'
-import Header from './Header'
-import Slider from './Slider'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-//import '../../node_modules/bootstrap/dist/js/bootstrap.min.js'
 import '../css/home.css'
 import '../css/general.css'
+
+// Pages
+import Home from '../pages/Home'
+import Game from '../pages/Game'
 
 
 function App() {
     return (
-        <div>
-            <div>
-                <Header />
-            </div>
-            <div>
-                <Slider />
-            </div>
-        </div>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route exact path="/game/" component={Game}/>
+            </Switch>
+        </BrowserRouter>
     )
 }
 

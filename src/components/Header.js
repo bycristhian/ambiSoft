@@ -1,6 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import eco from '../img/eco.png'
-import twitter from '../img/twitter.png'
+
+// Icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faFacebook, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 class Header extends React.Component {
 
@@ -14,11 +18,14 @@ class Header extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <a className="nav-item nav-link active text" href="#">Inicio</a>
-                        <a className="nav-item nav-link text" href="#">Juego</a>
+                        <a className="nav-item nav-link text" href="#">Inicio</a>
+                        <Link className="nav-item nav-link text" to="/game/">Jugar</Link>
+                        <a className="nav-item nav-link text" href="#">Ranking</a>
                     </div>
-                    <div>
-                        <img src={twitter}></img>
+                    <div className="container-social">
+                        <FontAwesomeIcon icon={faTwitter} size="2x" color="#56A430" className="icon" />
+                        <FontAwesomeIcon icon={faFacebook} size="2x" color="#56A430" className="icon" />
+                        <FontAwesomeIcon icon={faWhatsapp} size="2x" color="#56A430" className="icon" />
                     </div>
                 </div>
             </nav>
