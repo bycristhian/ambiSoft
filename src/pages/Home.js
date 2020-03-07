@@ -5,6 +5,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Slider from '../components/Slider'
 import ItemCaneca from '../components/ItemCaneca'
+import Footer from '../components/Footer'
 
 // Images
 import CanecaAzul from '../img/azul.png'
@@ -55,6 +56,9 @@ class Home extends React.Component {
                     <ItemCaneca title="Caneca Amarilla" image={CanecaAmarilla} items={this.state.itemsCanecaAmarilla} />
                     <ItemCaneca title="Caneca Roja" image={CanecaRoja} items={this.state.itemsCanecaAmarilla} />
                 </div>
+                <br/>
+                <br/>
+                <Footer />
             </React.Fragment>
         )
     }

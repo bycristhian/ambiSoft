@@ -18,7 +18,7 @@ class Header extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <a className="nav-item nav-link text" href="#">Inicio</a>
+                        <Link className="nav-item nav-link text" to="/">Inicio</Link>
                         <Link className="nav-item nav-link text" to="/game/">Jugar</Link>
                         <a className="nav-item nav-link text" href="#">Ranking</a>
                     </div>

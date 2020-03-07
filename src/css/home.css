@@ -62,7 +62,7 @@
 
 
 .container2 {
-    background-color: #ececec;
+    background-color: #f3f3f3;
     color: #414141;
     border-radius: 5px;
     padding: 15px;
@@ -98,3 +98,15 @@
 .item-caneca p {
     text-align: left;
 }
+
+footer {
+    margin-top: 50px;
+    color: #FFF;
+    background-color: #4CAF50;
+}
+
+footer a {
+    color: #FFF;
+    text-decoration: none;
+}
+
