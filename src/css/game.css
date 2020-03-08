@@ -8,3 +8,122 @@
     width: 90%;
     margin-left: 10%;
 }
+
+.rules {
+    margin: auto;
+    background-color: #FFF;
+    max-width: 50%;
+    padding: 40px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.rules h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.rules button {
+    margin-top: 40px;
+}
+
+.game-ranking {
+    margin: auto;
+    margin-top: 5%;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.game-ranking h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.comeBack {
+    background-color: #FFF;
+    position: absolute;
+    padding: 10px;
+    top: 5px;
+    border-radius: 0 10px 10px 0;
+    left: -40px;
+    z-index: 2;
+    cursor: pointer;
+    -webkit-box-shadow: 10px 10px 53px -23px rgba(0,0,0,0.79);
+    -moz-box-shadow: 10px 10px 53px -23px rgba(0,0,0,0.79);
+    box-shadow: 10px 10px 53px -23px rgba(0,0,0,0.79);
+}
+
+.comeBack:hover {
+    left: 0;
+    transition: 0.5s;
+}
+
+
+.score-header {
+    font-size: 25px;
+    font-weight: 600;
+    position: absolute;
+    right: 0;
+    margin-right: 70px;
+}
+
+.logo-trophy {
+    position: absolute;
+    right: 0;
+    margin-right: 15px;
+}
+
+
+.title-header-game {
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+
+.container-question {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    width: 90%;
+    margin: 20px 5%;
+    border-radius: 20px;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-box-shadow: 2px 5px 61px -27px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 5px 61px -27px rgba(0,0,0,1);
+    box-shadow: 2px 5px 61px -27px rgba(0,0,0,1);
+}
+
+
+.container-answers {
+    margin: auto;
+    width: 90%;
+    padding: 20px;
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.item-answer {
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.item-answer:hover {
+    -webkit-box-shadow: 2px 5px 61px -27px rgba(231,232,156,1);
+    -moz-box-shadow: 2px 5px 61px -27px rgba(231,232,156,1);
+    box-shadow: 2px 5px 61px -27px rgba(231,232,156,1);
+    transition: 0.5s;
+    transform: scaleZ(45);
+}
+
+
+
+.alert-message {
+    position: absolute;
+    bottom: 4%;
+    font-size: 20px;
+}

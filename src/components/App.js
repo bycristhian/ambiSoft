@@ -7,6 +7,7 @@ import '../css/game.css'
 import '../css/main.css'
 import '../css/util.css'
 import '../css/general.css'
+import '../css/ranking.css'
 
 // Pages
 import Home from '../pages/Home'

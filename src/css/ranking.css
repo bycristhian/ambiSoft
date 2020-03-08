@@ -1,0 +1,12 @@
+
+.score-player {
+    width: 100%;
+}
+
+.score-player h5 {
+    float: left;
+}
+
+.score-player p {
+   float: right; 
+}
