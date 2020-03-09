@@ -46,10 +46,10 @@
     padding: 10px;
     top: 5px;
     border-radius: 0 10px 10px 0;
-    left: -40px;
+    left: -35px;
     z-index: 2;
     cursor: pointer;
-    -webkit-box-shadow: 10px 10px 53px -23px rgba(0,0,0,0.79);
+    -webkit-box-shadow: 10px 10px 53px -23px rgba(0,0,0,0.90);
     -moz-box-shadow: 10px 10px 53px -23px rgba(0,0,0,0.79);
     box-shadow: 10px 10px 53px -23px rgba(0,0,0,0.79);
 }
@@ -120,10 +120,27 @@
     transform: scaleZ(45);
 }
 
-
-
 .alert-message {
     position: absolute;
     bottom: 4%;
     font-size: 20px;
+}
+
+.centrado-porcentual {
+    position: absolute;
+    left: 65%;
+    font-size: 40px;
+    font-weight: 600;
+    color: #4b4b4b;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.prueba {
+    background-image: url('../img/plant.jpg');
+    background-size: cover;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }

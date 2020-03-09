@@ -3,6 +3,7 @@ import React from 'react'
 
 // Components
 import FormSesion from '../components/FormSesion'
+import GoHome from '../components/GoHome'
 
 
 class FormLogin extends React.Component {
@@ -21,7 +22,10 @@ class FormLogin extends React.Component {
 
     render(){
         return(
-            <FormSesion action="Sign In" messageBack="Don't have an account?" btnName="Sign Up now" link="/signup/" handleChange={this.handleChange} onClick={this.handleClick}/>
+            <React.Fragment>
+                <GoHome />
+                <FormSesion action="Sign In" messageBack="Don't have an account?" btnName="Sign Up now" link="/signup/" handleChange={this.handleChange} onClick={this.handleClick}/>
+            </React.Fragment>
         )
     }
 

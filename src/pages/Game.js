@@ -8,10 +8,13 @@ import HeaderGame from '../components/HeaderGame'
 import ProgressBar from '../components/ProgressBar'
 import ItemAnswer from '../components/ItemAnswer'
 import Alert from '../components/Alert'
+import GameFinish from '../components/GameFinish'
 
 // Audio
 import AudioGame from '../audio/sound_game.mp3'
-  
+import AudioWin from '../audio/sound_win.mp3'
+import AudioIncorrect from '../audio/sound_incorrect.mp3'
+
 
 class Game extends React.Component {
 
@@ -20,6 +23,13 @@ class Game extends React.Component {
 
         this.counter = null
         this.audioGame = new Audio(AudioGame)
+        this.audioGame.volume = 0.5
+
+        // Audio answer correct
+        this.audioWin = new Audio(AudioWin)
+
+        // Audio answer incorrect
+        this.audioIncorrect = new Audio(AudioIncorrect)
     }
 
     state = {
@@ -148,35 +158,45 @@ class Game extends React.Component {
             return <Redirect to="/signin/" />
 
         } else if (this.state.statusGame == 'stop'){
-            return <PreGame handleClickStartGame={this.handleClickStartGame.bind(this)} />
+            return <PreGame handleClickStartGame={this.nextQuestion.bind(this)} />
+
+        } else if (this.state.statusGame == 'asking'){
+
+            this.audioGame.play()
+
+            return (
+                <React.Fragment>
+                    <HeaderGame numQuestion={this.state.numberQuestion + 1} score={this.state.score}/>
+                    <ProgressBar time={this.state.time} />
+                    <br/>
+                    <div className="col-md-12 bg-white container-question">
+                        {this.state.questions[this.state.numberQuestion].description}
+                    </div>
+                    <br/>
+                    <br/>
+                    <div className="col-md-12 container-answers row">
+                        {this.state.questions[this.state.numberQuestion].answers.map((answer, index) => (
+                            <ItemAnswer description={answer.description} handleClickAnswer={this.handleClickAnswer.bind(this)} idAnswer={index} />
+                        ))}
+                    </div>
+                    {(this.state.alert.show) ? <Alert message={this.state.alert.message} type={this.state.alert.type} /> : null }
+                </React.Fragment>
+            )
+
+        }else {
+            return <GameFinish score={this.state.score} player="Cristhian" handleClickRestartGame={this.handleClickRestartGame.bind(this)}/>
         }
+    }
 
-        //this.audioGame.play()
-
-        return (
-            <React.Fragment>
-                <HeaderGame numQuestion={this.state.numberQuestion + 1} score={this.state.score}/>
-                <ProgressBar time={this.state.time} />
-                <br/>
-                <div className="col-md-12 bg-white container-question">
-                    {this.state.questions[this.state.numberQuestion].description}
-                </div>
-                <br/>
-                <br/>
-                <div className="col-md-12 container-answers row">
-                    {this.state.questions[this.state.numberQuestion].answers.map((answer, index) => (
-                        <ItemAnswer description={answer.description} handleClickAnswer={this.handleClickAnswer.bind(this)} idAnswer={index} />
-                    ))}
-                </div>
-                {(this.state.alert.show) ? <Alert message={this.state.alert.message} type={this.state.alert.type} /> : null }
-            </React.Fragment>
-        )
+    componentWillUnmount(){
+        this.audioGame.pause()
     }
 
     handleClickAnswer(e){
         const answer = this.state.questions[this.state.numberQuestion].answers[e.target.id]
         if (this.state.wait == false){
             if (answer.is_correct){
+                this.audioWin.play()
                 this.setState({
                     'alert': {
                         'show': true,
@@ -186,6 +206,7 @@ class Game extends React.Component {
                     'score': this.state.score += this.state.time
                 })
             }else {
+                this.audioIncorrect.play()
                 this.setState({
                     'alert': {
                         'show': true,
@@ -202,35 +223,35 @@ class Game extends React.Component {
         }
     }
 
-    handleClickStartGame(){
-        this.nextQuestion()
-        this.setState({
-            'statusGame': 'asking'
-        })
-    }
-
     // Pasar a la siguiente pregunta
     nextQuestion(){
+        if (this.state.questions.length != this.state.numberQuestion + 1){
+            if (this.counter != null){
+                clearInterval(this.counter)
+            }
+    
+            this.setState({
+                'statusGame': 'asking',
+                'numberQuestion': this.state.numberQuestion += 1,
+                'time': 100,
+                'alert': {
+                    'show': false,
+                    'message': "",
+                    'type': ""
+                },
+                'wait': false
+            })
+    
+            setTimeout(() => {
+                this.counter = setInterval(this.startTime.bind(this), 160)
+            }, 1000)
 
-        if (this.counter != null){
-            clearInterval(this.counter)
+        }else {
+            this.audioGame.pause()
+            this.setState({
+                'statusGame': 'finish'
+            })
         }
-
-        this.setState({
-            'numberQuestion': this.state.numberQuestion += 1,
-            'time': 100,
-            'alert': {
-                'show': false,
-                'message': "",
-                'type': ""
-            },
-            'wait': false
-        })
-
-        setTimeout(() => {
-            this.counter = setInterval(this.startTime.bind(this), 160)
-        }, 1000)
-
     }
 
     // Disminuir el Progress Bar
@@ -241,6 +262,17 @@ class Game extends React.Component {
         }else {
             this.nextQuestion()
         }
+    }
+
+    handleClickRestartGame(){
+        this.setState({
+            'statusGame': 'stop',
+            'score': 0,
+            'time': 100,
+            'numberQuestion': -1
+        })
+        console.log("Restart game...")
+        console.log(this.state)
     }
 }
 

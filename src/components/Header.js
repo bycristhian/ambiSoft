@@ -9,6 +9,9 @@ import { faTwitter, faFacebook, faWhatsapp } from '@fortawesome/free-brands-svg-
 class Header extends React.Component {
 
     render(){
+
+        const host = 'http://localhost:3000'
+
         return(
             <nav className="navbar navbar-expand-lg bg_header box_sombra">
                 <img src={eco} className="mr-3" height="50" width="50"></img>
@@ -20,7 +23,7 @@ class Header extends React.Component {
                     <div className="navbar-nav">
                         <Link className="nav-item nav-link text" to="/">Inicio</Link>
                         <Link className="nav-item nav-link text" to="/game/">Jugar</Link>
-                        <a className="nav-item nav-link text" href="#">Ranking</a>
+                        {(`${host}/game/` != window.location.href) ? <Link className="nav-item nav-link text" to="/ranking/">Ranking</Link> : null}
                     </div>
                     <div className="container-social">
                         <FontAwesomeIcon icon={faTwitter} size="2x" color="#56A430" className="icon" />

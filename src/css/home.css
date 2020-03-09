@@ -102,6 +102,8 @@
 footer {
     margin-top: 50px;
     color: #FFF;
+    bottom: 0;
+    width: 100%;
     background-color: #4CAF50;
 }
 

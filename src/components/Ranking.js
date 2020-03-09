@@ -25,6 +25,26 @@ class Ranking extends React.Component {
             {
                 'username': 'Kelly',
                 'score': 10000
+            },
+            {
+                'username': 'Camilo',
+                'score': 1245
+            },
+            {
+                'username': 'Victor',
+                'score': 100
+            },
+            {
+                'username': 'David',
+                'score': 5000
+            },
+            {
+                'username': 'Cristhian',
+                'score': 500
+            },
+            {
+                'username': 'Kelly',
+                'score': 10000
             }
         ]
     }

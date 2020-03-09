@@ -1,20 +1,16 @@
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 // Components
 import Ranking from '../components/Ranking'
-
-// Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
+import GoHome from '../components/GoHome'
+import Header from './Header'
 
 
 const PreGame = (props) => (
     <React.Fragment>
-        <Link className="comeBack" to="/">
-            <FontAwesomeIcon icon={faHome} color="#4CAF50" size="2x" />
-        </Link>
+        <GoHome />
+        <Header />
         <div className="col-md-12 row">
             <div className="col-md-7 rules">
                 <h2>Instrucciones del juego</h2>

@@ -14,6 +14,7 @@ import Home from '../pages/Home'
 import Game from '../pages/Game'
 import FormLogin from '../pages/Login'
 import FormRegister from '../pages/Signup'
+import PageRanking from '../pages/Ranking'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                 <Route exact path="/game/" component={Game}/>
                 <Route exact path="/signin/" component={FormLogin}/>
                 <Route exact path="/signup/" component={FormRegister}/>
+                <Route exact path="/ranking/" component={PageRanking} />
             </Switch>
         </BrowserRouter>
     )
