@@ -11,7 +11,7 @@ const ItemFormAnswer = (props) => {
     return(
         <div className="md-form mb-5">
             <label data-error="wrong" data-success="right">{input}</label>
-            <input type="text" className="form-control validate" name={name}/>
+            <input type="text" className="form-control validate" name={name} onChange={props.handleChangeInputAnswer} />
         </div>
     )
 }

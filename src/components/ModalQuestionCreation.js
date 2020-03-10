@@ -11,12 +11,34 @@ import ItemFormAnswer from '../components/ItemFormAnswer'
 
 class ModalQuestionCreation extends React.Component {
 
+    state = {
+        'description': "",
+        'answers': {
+            'answer1': {
+                'description': "",
+                'is_correct': false
+            },
+            'answer2': {
+                'description': "",
+                'is_correct': false
+            },
+            'answer3': {
+                'description': "",
+                'is_correct': false
+            },
+            'answer4': {
+                'description': "",
+                'is_correct': false
+            },
+        }
+    }
+
     render(){
 
         var items = []
         for (let i = 0; i < 4; i++) {
             items.push(
-                <ItemFormAnswer input={`answer_${i + 1}`}/>
+                <ItemFormAnswer input={`answer_${i + 1}`} handleChangeInputAnswer={this.handleChangeInputAnswer.bind(this)}/>
             )
         }
 
@@ -32,8 +54,17 @@ class ModalQuestionCreation extends React.Component {
                                 </button>
                             </div>
                             <div className="modal-body mx-3">
-                                <ItemFormAnswer input="question"/>
+                                <ItemFormAnswer input="description" handleChangeInputAnswer={this.handleChangeInputAnswer.bind(this)} />
                                 {items}
+                            </div>
+                            <div class="form-group ml-4 mr-4">
+                                <label for="inputState">Respuesta correcta</label>
+                                <select id="inputState" class="form-control" onChange={this.prueba}>
+                                    <option value="1">Answer 1</option>
+                                    <option value="2">Answer 2</option>
+                                    <option value="3">Answer 3</option>
+                                    <option value="4">Answer 4</option>
+                                </select>
                             </div>
                             <div className="modal-footer d-flex justify-content-center">
                                 <button className="btn btn-dark btn-block">Crear</button>
@@ -43,6 +74,18 @@ class ModalQuestionCreation extends React.Component {
                 </div>
             </React.Fragment>
         )
+    }
+
+    handleChangeInputAnswer(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+
+        console.log(this.state)
+    }
+
+    prueba(e){
+        console.log(e.target.value)
     }
 }
 
