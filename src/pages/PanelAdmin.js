@@ -30,6 +30,10 @@ class PanelAdmin extends React.Component {
         )
     }
 
+    componentDidMount(){
+        document.title = "AmbiSoft | Admin"
+    }
+
 }
 
 export default PanelAdmin

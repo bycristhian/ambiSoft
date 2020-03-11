@@ -62,6 +62,10 @@ class Home extends React.Component {
             </React.Fragment>
         )
     }
+
+    componentDidMount(){
+        document.title = "AmbiSoft | Home"
+    }
 }
 
 export default Home

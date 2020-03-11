@@ -41,6 +41,10 @@ class FormLogin extends React.Component {
             console.log(this.state)
         }
     }
+
+    componentDidMount(){
+        document.title = "AmbiSoft | SignIn"
+    }
 }
 
 export default FormLogin

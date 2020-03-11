@@ -30,7 +30,8 @@ class ModalQuestionCreation extends React.Component {
                 'description': "",
                 'is_correct': false
             },
-        }
+        },
+        'answerCorrect': 1
     }
 
     render(){
@@ -85,7 +86,7 @@ class ModalQuestionCreation extends React.Component {
     }
 
     prueba(e){
-        console.log(e.target.value)
+        console.log(`Pregunta correcta: ${e.target.value}`)
     }
 }
 

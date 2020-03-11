@@ -41,6 +41,10 @@ class FormRegister extends React.Component {
             console.log(this.state)
         }
     }
+
+    componentDidMount(){
+        document.title = "AmbiSoft | SignUp"
+    }
 }
 
 export default FormRegister
