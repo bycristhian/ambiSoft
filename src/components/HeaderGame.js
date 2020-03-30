@@ -13,7 +13,7 @@ const HeaderGame = (props) => (
             <a className="navbar-brand" href="#">Cristhian</a>
         </div>
         <div className="col-md-4">
-            <p className="title-header-game">QUESTION {props.numQuestion}</p>
+            <p className="title-header-game">PREGUNTA {props.numQuestion}</p>
         </div>
         <div className="collapse navbar-collapse col-md-4" id="navbarSupportedContent">
             <p className="score-header">{props.score}</p>

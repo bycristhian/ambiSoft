@@ -71,6 +71,10 @@ class FormLogin extends React.Component {
         localStorage.setItem('token', data.token)
         return <Redirect to="/game/" />
     }
+    
+    componentDidMount(){
+        document.title = "AmbiSoft | SignIn"
+    }
 }
 
 export default FormLogin

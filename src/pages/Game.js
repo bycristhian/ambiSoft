@@ -190,6 +190,9 @@ class Game extends React.Component {
         this.audioGame.pause()
     }
 
+    componentDidMount(){
+        document.title = "AmbiSoft | Game"
+    }
 
     handleClickAnswer(e){
         const answer = this.state.questions[this.state.numberQuestion].answers[e.target.id]
@@ -218,7 +221,7 @@ class Game extends React.Component {
             clearInterval(this.counter)
             setTimeout(() => {
                 this.nextQuestion()
-            }, 3000)
+            }, 1500)
         }
     }
 

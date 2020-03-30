@@ -71,6 +71,10 @@ class FormRegister extends React.Component {
         localStorage.setItem('token', data.token)
         return <Redirect to="/game/" />
     }
+    
+    componentDidMount(){
+        document.title = "AmbiSoft | SignUp"
+    }
 }
 
 export default FormRegister
