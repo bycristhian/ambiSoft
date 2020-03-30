@@ -46,106 +46,106 @@ class Game extends React.Component {
         'numberQuestion': -1,
         'questions': [
             {
-                'description': '¿Qué es el reciclaje?',
+                'description': '¿Cuál es el porcentaje de plástico de un solo uso en Colombia?',
                 'answers': [
                     {
-                        'description': 'Es dormir sin parar',
+                        'description': 'El 96% del plástico es de un solo uso',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es reutilizar, reducir y reciclar elementos',
+                        'description': 'El 56% del plástico es de un solo uso',
                         'is_correct': true
                     },
                     {
-                        'description': 'Es programar para el backend',
+                        'description': 'El 50% del plástico es de un solo uso',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es tirar todos los elementos que ya no utilicemos a la basura',
+                        'description': 'El 20% del plástico es de un solo uso',
                         'is_correct': false
                     }
                 ]
             },
             {
-                'description': '¿Qué es la programación?',
+                'description': '¿Cuál empresa está haciendo calzado con productos reciclados?',
                 'answers': [
                     {
-                        'description': 'Es dormir sin parar',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Es reutilizar, reducir y reciclar elementos',
+                        'description': 'Ecoflow empresa de calzado elaborados por tubos de PVC, botas pantaneros, etc.',
                         'is_correct': true
                     },
                     {
-                        'description': 'Es programar para el backend',
+                        'description': 'Adidas empresa de calzado elaborados por cartón',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es tirar todos los elementos que ya no utilicemos a la basura',
+                        'description': 'Puma empresa de calzado elaborados por plástico',
+                        'is_correct': false
+                    },
+                    {
+                        'description': 'Reebook empresa de calzado elaborados por tubos de pvc',
                         'is_correct': false
                     }
                 ]
             },
             {
-                'description': '¿Qué es Backend?',
+                'description': '¿Qué es las 3 R en el medio ambiente?',
                 'answers': [
                     {
-                        'description': 'Es dormir sin parar',
+                        'description': 'Reutilizar, Reciclar y Reducir',
                         'is_correct': true
                     },
                     {
-                        'description': 'Es reutilizar, reducir y reciclar elementos',
+                        'description': 'Rotar, Reunir y Recoger',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es programar para el backend',
+                        'description': 'Recoger, Reutilizar y Robar',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es tirar todos los elementos que ya no utilicemos a la basura',
+                        'description': 'Reciclar, Rotar y Reutilizar',
                         'is_correct': false
                     }
                 ]
             },
             {
-                'description': '¿Qué es una base de datos?',
+                'description': 'Que norma técnica colombiana establece que para cada tipo de residuo se debe utilizar un contenedor de un color específico',
                 'answers': [
                     {
-                        'description': 'Es dormir sin parar',
+                        'description': 'La norma WHT35',
+                        'is_correct': false
+                    },
+                    {
+                        'description': 'La norma GTC24',
                         'is_correct': true
                     },
                     {
-                        'description': 'Es reutilizar, reducir y reciclar elementos',
+                        'description': 'La norma XYZ525',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es programar para el backend',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Es tirar todos los elementos que ya no utilicemos a la basura',
+                        'description': 'La norma ERT89',
                         'is_correct': false
                     }
                 ]
             },
             {
-                'description': '¿Qué es una API REST?',
+                'description': 'El fenómeno que ocasiona el calentamiento del planeta cambios climáticos y múltiples enfermedades respiratorios se le llama:',
                 'answers': [
                     {
-                        'description': 'Es dormir sin parar',
+                        'description': 'Tsunami',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es reutilizar, reducir y reciclar elementos',
+                        'description': 'Terremoto',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es programar para el backend',
+                        'description': 'Invierno',
                         'is_correct': false
                     },
                     {
-                        'description': 'Es tirar todos los elementos que ya no utilicemos a la basura',
+                        'description': 'Efecto invernadero',
                         'is_correct': true
                     }
                 ]
@@ -155,13 +155,13 @@ class Game extends React.Component {
 
     render(){
 
-        if (!this.state.isAuthenticated){
+        if (this.state.isAuthenticated){
             return <PreGame handleClickStartGame={this.nextQuestion.bind(this)} />
 
         } else if (this.state.statusGame == 'asking'){
 
             this.audioGame.play()
-
+            console.log("Hi")
             return (
                 <React.Fragment>
                     <HeaderGame numQuestion={this.state.numberQuestion + 1} score={this.state.score}/>
@@ -233,6 +233,7 @@ class Game extends React.Component {
             }
     
             this.setState({
+                'isAuthenticated': false,
                 'statusGame': 'asking',
                 'numberQuestion': this.state.numberQuestion += 1,
                 'time': 100,
@@ -243,6 +244,7 @@ class Game extends React.Component {
                 },
                 'wait': false
             })
+            console.log(this.state.statusGame)
     
             setTimeout(() => {
                 this.counter = setInterval(this.startTime.bind(this), 160)
