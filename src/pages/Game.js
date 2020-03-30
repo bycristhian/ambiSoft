@@ -154,10 +154,8 @@ class Game extends React.Component {
     }
 
     render(){
-        if (!this.state.isAuthenticated){
-            return <Redirect to="/signin/" />
 
-        } else if (this.state.statusGame == 'stop'){
+        if (!this.state.isAuthenticated){
             return <PreGame handleClickStartGame={this.nextQuestion.bind(this)} />
 
         } else if (this.state.statusGame == 'asking'){
@@ -191,6 +189,7 @@ class Game extends React.Component {
     componentWillUnmount(){
         this.audioGame.pause()
     }
+
 
     handleClickAnswer(e){
         const answer = this.state.questions[this.state.numberQuestion].answers[e.target.id]
@@ -273,6 +272,31 @@ class Game extends React.Component {
         })
         console.log("Restart game...")
         console.log(this.state)
+    }
+
+    async verifyAuthenticated(){
+        let token = localStorage.getItem('token')
+        var is_valid = false
+
+
+        if (token){
+            const url = 'http://localhost:8000/api/users/verify/'
+
+            const request = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({'token': token})
+            }
+    
+            const response = await fetch(url, request)
+            const data = await response.json()
+            
+            is_valid = data.is_valid
+
+        }
+        return is_valid
     }
 }
 

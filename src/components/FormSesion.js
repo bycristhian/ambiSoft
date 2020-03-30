@@ -12,12 +12,12 @@ const FormSesion = (props) => (
                     </span>
 
                     <div className="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-                        <input className="input100" type="text" name="username" placeholder="Username" onChange={props.handleChange}/>
+                        <input className="input100" type="text" name="username" value={props.data.username} placeholder="Username" onChange={props.handleChange}/>
                         <span className="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Please enter password">
-                        <input className="input100" type="password" name="password" placeholder="Password" onChange={props.handleChange}/>
+                        <input className="input100" type="password" name="password" value={props.data.password} placeholder="Password" onChange={props.handleChange}/>
                         <span className="focus-input100"></span>
                     </div>
                     <br/>
