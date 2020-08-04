@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "35474333addbe1380f9106cd3fef366c",
+    "revision": "f1347ba13769679f3039988408f4dd97",
     "url": "/ambiSoft/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ambiSoft/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "65f3b58c7abde5d1b545",
+    "revision": "16056b2807181ae0f898",
     "url": "/ambiSoft/static/css/main.9cca05dd.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ambiSoft/static/js/2.4e180c38.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "65f3b58c7abde5d1b545",
-    "url": "/ambiSoft/static/js/main.1f2a64ce.chunk.js"
+    "revision": "16056b2807181ae0f898",
+    "url": "/ambiSoft/static/js/main.3fe3f28d.chunk.js"
   },
   {
     "revision": "7e4ec7b063c09363105d",
