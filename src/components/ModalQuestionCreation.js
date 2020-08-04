@@ -1,10 +1,6 @@
 
 import React from 'react'
 
-// Icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faQuestion } from '@fortawesome/free-solid-svg-icons'
-
 // Components
 import ItemFormAnswer from '../components/ItemFormAnswer'
 
@@ -58,9 +54,9 @@ class ModalQuestionCreation extends React.Component {
                                 <ItemFormAnswer input="description" handleChangeInputAnswer={this.handleChangeInputAnswer.bind(this)} />
                                 {items}
                             </div>
-                            <div class="form-group ml-4 mr-4">
+                            <div className="form-group ml-4 mr-4">
                                 <label for="inputState">Respuesta correcta</label>
-                                <select id="inputState" class="form-control" onChange={this.prueba}>
+                                <select id="inputState" className="form-control" onChange={this.prueba}>
                                     <option value="1">Answer 1</option>
                                     <option value="2">Answer 2</option>
                                     <option value="3">Answer 3</option>
@@ -82,7 +78,6 @@ class ModalQuestionCreation extends React.Component {
             [e.target.name]: e.target.value
         })
 
-        console.log(this.state)
     }
 
     prueba(e){

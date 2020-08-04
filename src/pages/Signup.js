@@ -6,6 +6,10 @@ import { Redirect } from 'react-router-dom'
 import FormSesion from '../components/FormSesion'
 import GoHome from '../components/GoHome'
 
+// Constants
+import { URL_API } from '../constants'
+import { getValueLocalStorage } from '../auth/auth'
+
 
 class FormRegister extends React.Component {
 
@@ -17,17 +21,24 @@ class FormRegister extends React.Component {
 
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            wasCreated: false
         }
     }
 
     render(){
-        return(
-            <React.Fragment>
-                <GoHome />
-                <FormSesion data={this.state} action="Sign Up" messageBack="You have an account?" btnName="Sign In now" link="/signin/" handleChange={this.handleChange} onClick={this.handleClick} />
-            </React.Fragment>
-        )
+
+        if (this.state.wasCreated || getValueLocalStorage('auth_token') !== ''){
+            return <Redirect to="/signin/" />
+
+        } else {
+            return(
+                <React.Fragment>
+                    <GoHome />
+                    <FormSesion data={this.state} action="Sign Up" messageBack="You have an account?" btnName="Sign In now" link="/signin/" handleChange={this.handleChange} onClick={this.handleClick} />
+                </React.Fragment>
+            )
+        }
     }
 
     handleChange(e){
@@ -37,27 +48,28 @@ class FormRegister extends React.Component {
     }
 
     handleClick(){
-        if (this.state.username != "" && this.state.password != ""){
+        if (this.state.username !== "" && this.state.password !== ""){
             this.fetchData()
         }
     }
 
     async fetchData(){
-        const url = 'http://localhost:8000/api/users/signup/'
 
         const request = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'http_csrf_token': '262d3082b3981f86db9217265a06705e'
             },
             body: JSON.stringify(this.state)
         }
 
-        const response = await fetch(url, request)
-        const data = await response.json()
+        const response = await fetch(`${URL_API}/players/`, request)
 
-        if(response.status == 201){
-            this.setTokenLocalStorage(data)
+        if(response.status === 201){
+            this.setState({
+                wasCreated: true
+            })
 
         }else {
             this.setState({
@@ -65,11 +77,6 @@ class FormRegister extends React.Component {
                 'password': ""
             })
         }
-    }
-
-    setTokenLocalStorage(data){
-        localStorage.setItem('token', data.token)
-        return <Redirect to="/game/" />
     }
     
     componentDidMount(){

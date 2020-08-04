@@ -15,6 +15,10 @@ import AudioGame from '../audio/sound_game.mp3'
 import AudioWin from '../audio/sound_win.mp3'
 import AudioIncorrect from '../audio/sound_incorrect.mp3'
 
+// Auth
+import { getValueLocalStorage } from '../auth/auth'
+import { URL_API } from '../constants'
+
 
 class Game extends React.Component {
 
@@ -33,7 +37,7 @@ class Game extends React.Component {
     }
 
     state = {
-        'isAuthenticated': true,
+        'isAuthenticated': null,
         'statusGame': 'stop',
         'score': 0,
         'wait': false,
@@ -44,124 +48,14 @@ class Game extends React.Component {
         },
         'time': 100,
         'numberQuestion': -1,
-        'questions': [
-            {
-                'description': '¿Cuál es el porcentaje de plástico de un solo uso en Colombia?',
-                'answers': [
-                    {
-                        'description': 'El 96% del plástico es de un solo uso',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'El 56% del plástico es de un solo uso',
-                        'is_correct': true
-                    },
-                    {
-                        'description': 'El 50% del plástico es de un solo uso',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'El 20% del plástico es de un solo uso',
-                        'is_correct': false
-                    }
-                ]
-            },
-            {
-                'description': '¿Cuál empresa está haciendo calzado con productos reciclados?',
-                'answers': [
-                    {
-                        'description': 'Ecoflow empresa de calzado elaborados por tubos de PVC, botas pantaneros, etc.',
-                        'is_correct': true
-                    },
-                    {
-                        'description': 'Adidas empresa de calzado elaborados por cartón',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Puma empresa de calzado elaborados por plástico',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Reebook empresa de calzado elaborados por tubos de pvc',
-                        'is_correct': false
-                    }
-                ]
-            },
-            {
-                'description': '¿Qué es las 3 R en el medio ambiente?',
-                'answers': [
-                    {
-                        'description': 'Reutilizar, Reciclar y Reducir',
-                        'is_correct': true
-                    },
-                    {
-                        'description': 'Rotar, Reunir y Recoger',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Recoger, Reutilizar y Robar',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Reciclar, Rotar y Reutilizar',
-                        'is_correct': false
-                    }
-                ]
-            },
-            {
-                'description': 'Que norma técnica colombiana establece que para cada tipo de residuo se debe utilizar un contenedor de un color específico',
-                'answers': [
-                    {
-                        'description': 'La norma WHT35',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'La norma GTC24',
-                        'is_correct': true
-                    },
-                    {
-                        'description': 'La norma XYZ525',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'La norma ERT89',
-                        'is_correct': false
-                    }
-                ]
-            },
-            {
-                'description': 'El fenómeno que ocasiona el calentamiento del planeta cambios climáticos y múltiples enfermedades respiratorios se le llama:',
-                'answers': [
-                    {
-                        'description': 'Tsunami',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Terremoto',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Invierno',
-                        'is_correct': false
-                    },
-                    {
-                        'description': 'Efecto invernadero',
-                        'is_correct': true
-                    }
-                ]
-            }
-        ]
+        'questions': []
     }
 
     render(){
 
-        if (this.state.isAuthenticated){
-            return <PreGame handleClickStartGame={this.nextQuestion.bind(this)} />
-
-        } else if (this.state.statusGame == 'asking'){
+        if (this.state.statusGame === 'asking'){
 
             this.audioGame.play()
-            console.log("Hi")
             return (
                 <React.Fragment>
                     <HeaderGame numQuestion={this.state.numberQuestion + 1} score={this.state.score}/>
@@ -181,8 +75,14 @@ class Game extends React.Component {
                 </React.Fragment>
             )
 
-        }else {
-            return <GameFinish score={this.state.score} player="Cristhian" handleClickRestartGame={this.handleClickRestartGame.bind(this)}/>
+        } else if (this.state.isAuthenticated === false && this.state.isAuthenticated !== null){
+            return <Redirect to="/signin/" />
+
+        } else if (this.state.statusGame === 'finish') {
+            return <GameFinish score={this.state.score} player={getValueLocalStorage('username')} handleClickRestartGame={this.handleClickRestartGame.bind(this)}/>
+
+        } else {
+            return <PreGame handleClickStartGame={this.nextQuestion.bind(this)} />
         }
     }
 
@@ -190,13 +90,37 @@ class Game extends React.Component {
         this.audioGame.pause()
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         document.title = "AmbiSoft | Game"
+
+        const request = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'http_auth_token': getValueLocalStorage('auth_token'),
+                'http_csrf_token': '262d3082b3981f86db9217265a06705e'
+            }
+        }
+
+        let response = await fetch(`${URL_API}/questions/`, request)
+        let data = await response.json()
+
+        if (response.status === 200){
+            this.setState({
+                questions: data.payload,
+                isAuthenticated: true
+            })
+
+        }else {
+            this.setState({
+                isAuthenticated: false
+            })
+        }
     }
 
     handleClickAnswer(e){
         const answer = this.state.questions[this.state.numberQuestion].answers[e.target.id]
-        if (this.state.wait == false){
+        if (this.state.wait === false){
             if (answer.is_correct){
                 this.audioWin.play()
                 this.setState({
@@ -227,13 +151,12 @@ class Game extends React.Component {
 
     // Pasar a la siguiente pregunta
     nextQuestion(){
-        if (this.state.questions.length != this.state.numberQuestion + 1){
-            if (this.counter != null){
+        if (this.state.questions.length !== this.state.numberQuestion + 1){
+            if (this.counter !== null){
                 clearInterval(this.counter)
             }
     
             this.setState({
-                'isAuthenticated': false,
                 'statusGame': 'asking',
                 'numberQuestion': this.state.numberQuestion += 1,
                 'time': 100,
@@ -244,7 +167,6 @@ class Game extends React.Component {
                 },
                 'wait': false
             })
-            console.log(this.state.statusGame)
     
             setTimeout(() => {
                 this.counter = setInterval(this.startTime.bind(this), 160)
@@ -255,12 +177,31 @@ class Game extends React.Component {
             this.setState({
                 'statusGame': 'finish'
             })
+
+            const request = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'http_auth_token': getValueLocalStorage('auth_token'),
+                    'http_csrf_token': '262d3082b3981f86db9217265a06705e'
+                },
+                body: JSON.stringify({
+                    username: getValueLocalStorage('username'),
+                    score: this.state.score
+                })
+            }
+
+            this.updateScorePlayer(request)
         }
+    }
+
+    async updateScorePlayer(request){
+        await fetch(`${URL_API}/players/${getValueLocalStorage('idUser')}/`, request)
     }
 
     // Disminuir el Progress Bar
     startTime(){
-        if(this.state.time != 0){
+        if(this.state.time !== 0){
             this.setState({'time': this.state.time -1})
 
         }else {
@@ -275,33 +216,6 @@ class Game extends React.Component {
             'time': 100,
             'numberQuestion': -1
         })
-        console.log("Restart game...")
-        console.log(this.state)
-    }
-
-    async verifyAuthenticated(){
-        let token = localStorage.getItem('token')
-        var is_valid = false
-
-
-        if (token){
-            const url = 'http://localhost:8000/api/users/verify/'
-
-            const request = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({'token': token})
-            }
-    
-            const response = await fetch(url, request)
-            const data = await response.json()
-            
-            is_valid = data.is_valid
-
-        }
-        return is_valid
     }
 }
 

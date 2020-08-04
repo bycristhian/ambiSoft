@@ -1,57 +1,18 @@
 
 import React from 'react'
 
+// Constants
+import { URL_API } from '../constants'
 
 class Ranking extends React.Component {
 
     state = {
-        'players': [
-            {
-                'username': 'Camilo',
-                'score': 1245
-            },
-            {
-                'username': 'Victor',
-                'score': 100
-            },
-            {
-                'username': 'David',
-                'score': 5000
-            },
-            {
-                'username': 'Cristhian',
-                'score': 500
-            },
-            {
-                'username': 'Kelly',
-                'score': 10000
-            },
-            {
-                'username': 'Camilo',
-                'score': 1245
-            },
-            {
-                'username': 'Victor',
-                'score': 100
-            },
-            {
-                'username': 'David',
-                'score': 5000
-            },
-            {
-                'username': 'Cristhian',
-                'score': 500
-            },
-            {
-                'username': 'Kelly',
-                'score': 10000
-            }
-        ]
+        'players': []
     }
 
     render(){
         return(
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -70,6 +31,26 @@ class Ranking extends React.Component {
                 </tbody>
             </table>
         )
+    }
+
+    async componentDidMount(){
+
+        const request = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'http_csrf_token': '262d3082b3981f86db9217265a06705e'
+            }
+        }
+
+        let response = await fetch(`${URL_API}/players/top/5/`, request)
+        let data = await response.json()
+
+        if (response.status === 200){
+            this.setState({
+                players: data.payload
+            })
+        }
     }
 }
 

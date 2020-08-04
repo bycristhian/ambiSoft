@@ -6,6 +6,13 @@ import eco from '../img/eco.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter, faFacebook, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
+// Auth
+import { getValueLocalStorage } from '../auth/auth'
+
+// Constants
+import { URL_API } from '../constants'
+
+
 class Header extends React.Component {
 
     render(){
@@ -23,7 +30,8 @@ class Header extends React.Component {
                     <div className="navbar-nav">
                         <Link className="nav-item nav-link text" to="/">Inicio</Link>
                         <Link className="nav-item nav-link text" to="/game/">Jugar</Link>
-                        {(`${host}/game/` != window.location.href) ? <Link className="nav-item nav-link text" to="/ranking/">Ranking</Link> : null}
+                        {(`${URL_API}/game/` !== window.location.href) ? <Link className="nav-item nav-link text" to="/ranking/">Ranking</Link> : null}
+                        {(getValueLocalStorage('auth_token') !== '') ? <Link to="/signin/" onClick={this.closeSession.bind(this)} className="nav-item nav-link text">Logout</Link> : null}
                     </div>
                     <div className="container-social">
                         <FontAwesomeIcon icon={faTwitter} size="2x" color="#56A430" className="icon" />
@@ -33,6 +41,13 @@ class Header extends React.Component {
                 </div>
             </nav>
         )
+    }
+
+    closeSession(){
+        localStorage.setItem('auth_token', '')
+        localStorage.setItem('username', '')
+        localStorage.setItem('idUser', '')
+        localStorage.setItem('score', '')
     }
 }
 

@@ -11,8 +11,8 @@ class Slider extends React.Component {
     render(){
         return (
             <div id="carouselExampleCaptions" className="carousel slide " data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <ol className="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                 </ol>

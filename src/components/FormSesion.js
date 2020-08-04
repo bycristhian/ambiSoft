@@ -16,7 +16,7 @@ const FormSesion = (props) => (
                         <span className="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate = "Please enter password">
+                    <div className="wrap-input100 validate-input" data-validate = "Please enter password">
                         <input className="input100" type="password" name="password" value={props.data.password} placeholder="Password" onChange={props.handleChange}/>
                         <span className="focus-input100"></span>
                     </div>
@@ -38,12 +38,12 @@ const FormSesion = (props) => (
                         </button>
                     </div>
 
-                    <div class="flex-col-c p-t-170 p-b-40">
-                        <span class="txt1 p-b-9">
+                    <div className="flex-col-c p-t-170 p-b-40">
+                        <span className="txt1 p-b-9">
                             {props.messageBack}
                         </span>
 
-                        <Link to={props.link} class="txt3">
+                        <Link to={props.link} className="txt3">
                             {props.btnName}
                         </Link>
                     </div>

@@ -5,12 +5,15 @@ import React from 'react'
 import Trophy from '../img/trophy.png'
 import User from '../img/user.png'
 
+// Auth
+import { getValueLocalStorage } from '../auth/auth'
+
 
 const HeaderGame = (props) => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light col-md-12">
         <div className="col-md-4">
             <img src={User} height="40" className="mr-3" />
-            <a className="navbar-brand" href="#">Cristhian</a>
+            <a className="navbar-brand" href="#">{getValueLocalStorage('username')}</a>
         </div>
         <div className="col-md-4">
             <p className="title-header-game">PREGUNTA {props.numQuestion}</p>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 const GameFinish = (props) => (
     <div className="prueba">
-        <div class="centrado-porcentual">
+        <div className="centrado-porcentual">
             Gracias por jugar {props.player} <br/>Puntuación total:  {props.score}
             <br/>
             <div className="row">
