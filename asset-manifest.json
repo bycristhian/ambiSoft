@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ambiSoft/static/css/main.9cca05dd.chunk.css",
-    "main.js": "/ambiSoft/static/js/main.86651c6d.chunk.js",
-    "main.js.map": "/ambiSoft/static/js/main.86651c6d.chunk.js.map",
+    "main.js": "/ambiSoft/static/js/main.1f2a64ce.chunk.js",
+    "main.js.map": "/ambiSoft/static/js/main.1f2a64ce.chunk.js.map",
     "runtime-main.js": "/ambiSoft/static/js/runtime-main.ce6d28e1.js",
     "runtime-main.js.map": "/ambiSoft/static/js/runtime-main.ce6d28e1.js.map",
     "static/css/2.47e06e2e.chunk.css": "/ambiSoft/static/css/2.47e06e2e.chunk.css",
     "static/js/2.4e180c38.chunk.js": "/ambiSoft/static/js/2.4e180c38.chunk.js",
     "static/js/2.4e180c38.chunk.js.map": "/ambiSoft/static/js/2.4e180c38.chunk.js.map",
     "index.html": "/ambiSoft/index.html",
-    "precache-manifest.c33b1631c7ea81b5e35e737c72d9c548.js": "/ambiSoft/precache-manifest.c33b1631c7ea81b5e35e737c72d9c548.js",
+    "precache-manifest.db2016c62b672cbdcadacb3a5cf98e98.js": "/ambiSoft/precache-manifest.db2016c62b672cbdcadacb3a5cf98e98.js",
     "service-worker.js": "/ambiSoft/service-worker.js",
     "static/css/2.47e06e2e.chunk.css.map": "/ambiSoft/static/css/2.47e06e2e.chunk.css.map",
     "static/css/main.9cca05dd.chunk.css.map": "/ambiSoft/static/css/main.9cca05dd.chunk.css.map",
@@ -33,6 +33,6 @@
     "static/css/2.47e06e2e.chunk.css",
     "static/js/2.4e180c38.chunk.js",
     "static/css/main.9cca05dd.chunk.css",
-    "static/js/main.86651c6d.chunk.js"
+    "static/js/main.1f2a64ce.chunk.js"
   ]
 }
