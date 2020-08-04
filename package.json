@@ -2,6 +2,7 @@
   "name": "ambisoft",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bycristhian.github.io/ambiSoft/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
@@ -18,7 +19,6 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
   },
-  "homepage": "https://bycristhian.github.io/ambiSoft",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
