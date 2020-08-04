@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ambiSoft/precache-manifest.76f62dfa197dda995a5a1b63045112e7.js"
+  "/ambiSoft/precache-manifest.87398c358ab3e0d885f48d08ca9c8224.js"
 );
 
 self.addEventListener('message', (event) => {
