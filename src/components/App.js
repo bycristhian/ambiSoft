@@ -21,7 +21,7 @@ import PanelAdmin from '../pages/PanelAdmin'
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={window.location.pathname || ''}>
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/game/" component={Game}/>
