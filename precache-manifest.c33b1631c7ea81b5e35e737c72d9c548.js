@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "44afb3c7cfe2effc4d6fcf3919833c73",
+    "revision": "282cc3cf91628ed9815823dd533c3645",
     "url": "/ambiSoft/index.html"
   },
   {
