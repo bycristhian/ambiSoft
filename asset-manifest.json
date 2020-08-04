@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/ambiSoft/static/css/main.9cca05dd.chunk.css",
+    "main.js": "/ambiSoft/static/js/main.86651c6d.chunk.js",
+    "main.js.map": "/ambiSoft/static/js/main.86651c6d.chunk.js.map",
+    "runtime-main.js": "/ambiSoft/static/js/runtime-main.ce6d28e1.js",
+    "runtime-main.js.map": "/ambiSoft/static/js/runtime-main.ce6d28e1.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/ambiSoft/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.4e180c38.chunk.js": "/ambiSoft/static/js/2.4e180c38.chunk.js",
+    "static/js/2.4e180c38.chunk.js.map": "/ambiSoft/static/js/2.4e180c38.chunk.js.map",
+    "index.html": "/ambiSoft/index.html",
+    "precache-manifest.76f62dfa197dda995a5a1b63045112e7.js": "/ambiSoft/precache-manifest.76f62dfa197dda995a5a1b63045112e7.js",
+    "service-worker.js": "/ambiSoft/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/ambiSoft/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.9cca05dd.chunk.css.map": "/ambiSoft/static/css/main.9cca05dd.chunk.css.map",
+    "static/js/2.4e180c38.chunk.js.LICENSE.txt": "/ambiSoft/static/js/2.4e180c38.chunk.js.LICENSE.txt",
+    "static/media/amarilla.png": "/ambiSoft/static/media/amarilla.7c27c6a0.png",
+    "static/media/azul.png": "/ambiSoft/static/media/azul.04ee80d3.png",
+    "static/media/home.css": "/ambiSoft/static/media/fondo1.0e7c54e0.png",
+    "static/media/gris.png": "/ambiSoft/static/media/gris.687463bc.png",
+    "static/media/game.css": "/ambiSoft/static/media/plant.7f2dd67c.jpg",
+    "static/media/rojo.png": "/ambiSoft/static/media/rojo.b760d605.png",
+    "static/media/slider1.jpg": "/ambiSoft/static/media/slider1.66b1001e.jpg",
+    "static/media/slider10.jpg": "/ambiSoft/static/media/slider10.52eba892.jpg",
+    "static/media/slider4.jpg": "/ambiSoft/static/media/slider4.086b98cd.jpg",
+    "static/media/sound_game.mp3": "/ambiSoft/static/media/sound_game.7c0bd93a.mp3",
+    "static/media/sound_incorrect.mp3": "/ambiSoft/static/media/sound_incorrect.2a5221f0.mp3",
+    "static/media/sound_win.mp3": "/ambiSoft/static/media/sound_win.6f017918.mp3",
+    "static/media/verde.png": "/ambiSoft/static/media/verde.a0794a7f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ce6d28e1.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.4e180c38.chunk.js",
+    "static/css/main.9cca05dd.chunk.css",
+    "static/js/main.86651c6d.chunk.js"
+  ]
+}
