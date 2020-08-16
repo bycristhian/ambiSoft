@@ -37,6 +37,7 @@ class Game extends React.Component {
     }
 
     state = {
+        'isLoading': true,
         'isAuthenticated': null,
         'statusGame': 'stop',
         'score': 0,
@@ -53,7 +54,15 @@ class Game extends React.Component {
 
     render(){
 
-        if (this.state.statusGame === 'asking'){
+        if (this.state.isLoading){
+            return (
+                <div className="overflow-hidden row text-center justify-content-center align-items-center vh-100">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            )
+        } else if (this.state.statusGame === 'asking'){
 
             this.audioGame.play()
             return (
@@ -107,12 +116,13 @@ class Game extends React.Component {
 
         if (response.status === 200){
             this.setState({
+                isLoading: false,
                 questions: data.payload,
                 isAuthenticated: true
             })
-
         }else {
             this.setState({
+                isLoading: false,
                 isAuthenticated: false
             })
         }

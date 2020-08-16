@@ -7,30 +7,41 @@ import { URL_API } from '../constants'
 class Ranking extends React.Component {
 
     state = {
+        'isLoading': true,
         'players': []
     }
 
     render(){
-        return(
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.players.map((player, index )=> (
+        if (this.state.isLoading){
+            return(
+                <div className="text-center p-4">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            )
+        } else {
+            return(
+                <table className="table table-striped">
+                    <thead>
                         <tr>
-                            <th scope="row">{index + 1}</th>
-                            <td>{player.username}</td>
-                            <td>{player.score}</td>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Score</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        )
+                    </thead>
+                    <tbody>
+                        {this.state.players.map((player, index )=> (
+                            <tr>
+                                <th scope="row">{index + 1}</th>
+                                <td>{player.username}</td>
+                                <td>{player.score}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )
+        }
     }
 
     async componentDidMount(){
@@ -48,6 +59,7 @@ class Ranking extends React.Component {
 
         if (response.status === 200){
             this.setState({
+                isLoading: false,
                 players: data.payload
             })
         }
