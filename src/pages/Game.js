@@ -115,11 +115,21 @@ class Game extends React.Component {
         let data = await response.json()
 
         if (response.status === 200){
+<<<<<<< HEAD
             this.setState({
                 isLoading: false,
                 questions: data.payload,
                 isAuthenticated: true
             })
+=======
+            setTimeout(() => {
+                this.setState({
+                    isLoading: false,
+                    questions: data.payload,
+                    isAuthenticated: true
+                })
+            }, 4000)
+>>>>>>> 1e4f0ebd4a8ab5adda3b7c93ddb02ef4c9e4ec64
         }else {
             this.setState({
                 isLoading: false,
